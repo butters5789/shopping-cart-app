@@ -1,0 +1,26 @@
+body {
+  padding-bottom: 50px; }
+
+.navbar {
+  margin-bottom: 40px; }
+
+.header h1 {
+  font-style: italic;
+  font-weight: bold;
+  color: #fb7f5c;
+  font-size: 50px; }
+
+.home thead > tr > th {
+  vertical-align: top; }
+
+.home img {
+  max-width: 100%; }
+
+.home .row {
+  border-bottom: 1px solid; }
+
+.home .col-md-6 {
+  border-left: 1px solid; }
+
+.home h3, .home h4 {
+  display: inline-block; }

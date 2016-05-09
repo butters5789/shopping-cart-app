@@ -1,0 +1,132 @@
+        <!-- <div class="row">
+            <div class="col-md-3">
+                <h4>Tea</h4>
+            </div>
+            <div class="col-md-6">
+                <h4>Information</h4>
+            </div>
+            <div class="col-md-3 text-right">
+                <h4>Sort By Price:
+                    <select>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </h4>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <img ng-src="{{ item.imageUrl }}" alt="{{ item.name }}" />
+            </div>
+            <div class="col-md-6">
+                <h3>{{ item.name }}</h3>
+                <p><strong>Price:</strong> {{ item.price | currency }}</p>
+                <p><strong>Caffeine Scale:</strong> {{ item.caffeineScale }}</p>
+                <p><strong>Ingredients:</strong> {{ item.ingredients }}</p>
+                <p><strong>Rating:</strong> {{ item.rating }}</p>
+                <p><strong>In Stock?</strong> {{ item.inStock }}</p>
+                <p><strong>Categories:</strong> {{ item.categories }}</p>
+            </div>
+            <div class="col-md-3">
+                <h3>Quantity:
+                    <select>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                    <button class="btn btn-default" type="submit">Add To Bag</button>
+                </h3>
+            </div>
+        </div> -->
+<div class="row">
+    <div class="col-md-4">
+        <h4>
+            <div class="form-group form-inline">
+                <label for="searchCategory">Search by category:</label>
+                <select id="searchCategory" class="form-control" ng-model="searchCategory.categories">
+                    <option></option>
+                    <option value="awesome">Awesome</option>
+                    <option value="cold">Cold</option>
+                    <option value="dark">Dark</option>
+                    <option value="dry">Dry</option>
+                    <option value="hot">Hot</option>
+                    <option value="lucid">Lucid</option>
+                    <option value="spring">Spring</option>
+                    <option value="summer">Summer</option>
+                    <option value="warm">Warm</option>
+                    <option value="winter">Winter</option>
+                </select>
+            </div>
+        </h4>
+    </div>
+    <div class="col-md-8">
+        <h4>
+            <div class="form-group form-inline">
+                <label for="searchName">Search by name:</label>
+                <input id="searchName" class="form-control" type="text" ng-model="searchText">
+            </div>
+        </h4>
+    </div>
+</div>
+
+<div class="row home">
+    <div class="col-md-12">
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th><h4><label>Tea</label></h4></th>
+                    <th>
+                        <h4><label>Information</label></h4>
+                        <h4 class="pull-right form-inline">
+                            <label for="sortByPrice">Sort By Price:</label>
+                            <select id="sortByPrice" class="form-control" ng-model="view.priceSort">
+                                <option value="+">Low</option>
+                                <option value="-">High</option>
+                            </select>
+                        </h4>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in view.defaultData | filter:searchText | filter:searchCategory:strict | orderBy:view.priceSort + 'price'">
+                    <td>
+                        <img ng-src="{{ item.imageUrl }}" alt="{{ item.name }}" />
+                    </td>
+                    <td>
+                        <h3 class="pull-right">
+                            <div class="form-group form-inline">
+                                <label for="quantity">Quantity:</label>
+                                <input  id="quantity"
+                                        class="form-control"
+                                        type="number"
+                                        min="0"
+                                        max="99"
+                                        value="0"
+                                        ng-model="view.quantity">
+                                <button class="btn btn-warning" type="submit">Add To Bag</button>
+                            </div>
+                        </h3>
+                        <h3>{{ item.name }}</h3>
+                        <p><strong>Price:</strong> {{ item.price | money | currency }}</p>
+                        <p><strong>Caffeine Scale:</strong> {{ item.caffeineScale }}</p>
+                        <p><strong>Ingredients:</strong> {{ item.ingredients }}</p>
+                        <p><strong>Rating:</strong> {{ item.rating }}</p>
+                        <p><strong>In Stock?</strong> {{ item.inStock }}</p>
+                        <p>
+                            <strong>Categories:</strong>
+                            <ul>
+                                <li ng-repeat="cat in item.categories">{{ cat }}</li>
+                            </ul>
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
